@@ -10,7 +10,7 @@ class PrintBookInterface(ABC):
     book: BookInterface
 
     @abstractmethod
-    def print_book(self):
+    def print_book(self) -> None:
         pass
 
 
@@ -18,7 +18,7 @@ class SerializeBookInterface(ABC):
     book: BookInterface
 
     @abstractmethod
-    def serialize(self):
+    def serialize(self) -> None:
         pass
 
 
@@ -26,5 +26,5 @@ class DisplayBookInterface(ABC):
     book: BookInterface
 
     @abstractmethod
-    def display(self):
+    def display(self) -> None:
         pass

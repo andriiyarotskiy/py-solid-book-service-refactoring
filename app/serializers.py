@@ -1,26 +1,29 @@
 import json
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as Et
 
 from app.books import Book
 from app.interfaces import SerializeBookInterface
 
 
 class SerializeBookJSON(SerializeBookInterface):
-    def __init__(self, book: Book):
+    def __init__(self, book: Book) -> None:
         self.book = book
 
-    def serialize(self):
-        return json.dumps({"title": self.book.title, "content": self.book.content})
+    def serialize(self) -> str:
+        return json.dumps({
+            "title": self.book.title,
+            "content": self.book.content
+        })
 
 
 class SerializeBookXML(SerializeBookInterface):
-    def __init__(self, book: Book):
+    def __init__(self, book: Book) -> None:
         self.book = book
 
-    def serialize(self):
-        root = ET.Element("book")
-        title = ET.SubElement(root, "title")
+    def serialize(self) -> str:
+        root = Et.Element("book")
+        title = Et.SubElement(root, "title")
         title.text = self.book.title
-        content = ET.SubElement(root, "content")
+        content = Et.SubElement(root, "content")
         content.text = self.book.content
-        return ET.tostring(root, encoding="unicode")
+        return Et.tostring(root, encoding="unicode")
