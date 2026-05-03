@@ -6,6 +6,14 @@ class BookInterface(ABC):
     content: str
 
 
+class DisplayBookInterface(ABC):
+    book: BookInterface
+
+    @abstractmethod
+    def display(self) -> None:
+        pass
+
+
 class PrintBookInterface(ABC):
     book: BookInterface
 
@@ -18,13 +26,5 @@ class SerializeBookInterface(ABC):
     book: BookInterface
 
     @abstractmethod
-    def serialize(self) -> None:
-        pass
-
-
-class DisplayBookInterface(ABC):
-    book: BookInterface
-
-    @abstractmethod
-    def display(self) -> None:
+    def serialize(self) -> str:
         pass
